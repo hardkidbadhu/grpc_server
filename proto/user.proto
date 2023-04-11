@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option go_package = "server/user";
+
+message User {
+  string name = 1;
+  string Gender = 2;
+  int32 age = 3;
+  optional string MaritalStatus = 4;
+}
+
+message GetUserListRequest {
+  string name = 1;
+}
+message GetUserListResponse { repeated User users = 1; }
+
+service Inventory {
+  rpc GetUserList(GetUserListRequest) returns (GetUserListResponse) {}
+}
